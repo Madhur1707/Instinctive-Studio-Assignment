@@ -1,7 +1,7 @@
-import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import StudentTable from "@/components/StudentTable";
 import AddStudentModal from "@/components/AddStudentModal";
+import Header from "@/components/header";
 
 const Dashboard = () => {
   return (
