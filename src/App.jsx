@@ -1,12 +1,14 @@
 import Dashboard from "./pages/Dashboard";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
-    <>
-      <div className=" w-full top-0">
+    <Provider store={store}>
+      <div className="w-full top-0">
         <Dashboard />
       </div>
-    </>
+    </Provider>
   );
 }
 
