@@ -8,15 +8,27 @@ import {
   Settings,
 } from "lucide-react";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
-    <aside className="w-64 bg-gray-50 h-full shadow-md">
+    <aside
+      className={`w-64 bg-gray-50 h-full shadow-md transition-all ${
+        isOpen ? "block" : "hidden"
+      } lg:block`}
+    >
       <div className="p-3">
         <div className="mb-8 ml-3">
           <img src="/Vector.png" alt="Quyl" />
         </div>
 
-        <div className="space-y-4  text-gray-800">
+        <Button
+          variant="ghost"
+          className="lg:hidden p-2"
+          onClick={toggleSidebar}
+        >
+          X
+        </Button>
+
+        <div className="space-y-4 text-gray-800">
           <Button variant="ghost" className="w-full justify-start text-base">
             <LayoutDashboard /> Dashboard
           </Button>

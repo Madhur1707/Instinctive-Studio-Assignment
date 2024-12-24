@@ -91,24 +91,36 @@ const StudentTable = () => {
   }
 
   return (
-    <Table>
+    <Table className="min-w-full">
       <TableHeader>
         <TableRow>
           <TableHead className="text-black">Student Name</TableHead>
           <TableHead className="text-black">Cohort</TableHead>
-          <TableHead className="text-black">Courses</TableHead>
-          <TableHead className="text-black">Date Joined</TableHead>
-          <TableHead className="text-black">Last Login</TableHead>
+          <TableHead className="text-black hidden sm:table-cell">
+            Courses
+          </TableHead>
+          <TableHead className="text-black hidden md:table-cell">
+            Date Joined
+          </TableHead>
+          <TableHead className="text-black hidden md:table-cell">
+            Last Login
+          </TableHead>
           <TableHead className="text-black">Status</TableHead>
           <TableHead className="text-black">Update & Delete</TableHead>
         </TableRow>
       </TableHeader>
+
       <TableBody>
         {students.map((student) => (
           <TableRow key={student.id}>
-            <TableCell>{student.name}</TableCell>
-            <TableCell>{student.cohort}</TableCell>
-            <TableCell>
+            <TableCell className="text-sm sm:text-base">
+              {student.name}
+            </TableCell>
+            <TableCell className="text-sm sm:text-base">
+              {student.cohort}
+            </TableCell>
+
+            <TableCell className="text-sm sm:text-base hidden sm:table-cell">
               <div className="flex flex-wrap gap-2 items-center">
                 {student.courses.map((course, index) => (
                   <span key={index} className="flex items-center gap-1">
@@ -119,25 +131,34 @@ const StudentTable = () => {
                 ))}
               </div>
             </TableCell>
-            <TableCell>{student.dateJoined}</TableCell>
-            <TableCell>{student.lastLogin}</TableCell>
-            <TableCell>
+
+            <TableCell className="text-sm sm:text-base hidden md:table-cell">
+              {student.dateJoined}
+            </TableCell>
+
+            <TableCell className="text-sm sm:text-base hidden md:table-cell">
+              {student.lastLogin}
+            </TableCell>
+
+            <TableCell className="text-sm sm:text-base">
               <div
                 className={`w-4 h-4 rounded-full ${
                   student.status === "Active" ? "bg-green-500" : "bg-red-500"
                 }`}
               ></div>
             </TableCell>
-            <TableCell>
+
+            <TableCell className="text-sm sm:text-base flex items-center gap-2">
               <Button
                 onClick={() => setEditingStudent(student)}
-                className="text-white mr-2"
+                className="text-white bg-blue-500 hover:bg-blue-600"
               >
                 <Edit className="w-5 h-5" />
               </Button>
               <Button
                 onClick={() => handleDelete(student.id)}
                 variant="destructive"
+                className="bg-red-500 hover:bg-red-600"
               >
                 <Trash className="w-5 h-5" />
               </Button>
@@ -145,6 +166,7 @@ const StudentTable = () => {
           </TableRow>
         ))}
       </TableBody>
+
       {editingStudent && (
         <EditStudentModal
           student={editingStudent}
