@@ -24,4 +24,4 @@
 * Frontend: React, Redux, Tailwind CSS, Supabase, Lucide React Icons
 * Backend: Supabase 
 * State Management: Redux Toolkit
- * UI Components: Custom components built using Tailwind CSS and ShadCN UI 
+* UI Components: Custom components built using Tailwind CSS and ShadCN UI 
